@@ -1,0 +1,83 @@
+package editortrees;
+
+/**
+ * TODO Put here a description of what this class does.
+ * 
+ * @author kochelmj. Created Jan 28, 2014.
+ */
+public class DisplayTester {
+
+	/**
+	 * TODO Put here a description of what this method does.
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		EditTree t1 = new EditTree();
+		EditTree t2 = new EditTree();
+		t1.add('a');
+//		t1.add('b');
+//		t1.add('c');
+//		t1.add('d');
+//		t1.add('e');
+//		t1.add('f');
+//		t1.add('g');
+		t2.add('A');
+		t2.add('B');
+		t2.add('C');
+		t2.add('D');
+		t2.add('E');
+		t2.add('F');
+		t2.add('G');
+		t2.add('H');
+//		t2.add('I');
+//		t2.add('J');
+//		t2.add('K');
+//		t2.add('L');
+//		t2.add('M');
+//		t2.add('N');
+//		t2.add('O');
+		int hT1 = t1.height();
+		int hT2 = t2.height();
+		int sT1 = t1.size();
+		int sT2 = t2.size();
+
+
+		boolean result = true;
+
+		// Expected toString() of concatenated tree
+		String expected = t1.toString() + t2.toString();
+
+		t1.concatenate(t2);
+
+		// Check output of concatenated tree
+		result = result && t1.toString().equals(expected);
+
+		// Make sure the old tree is now empty
+		result = result && t2.toString().equals("");
+
+		// Make sure new tree is height-balanced
+		int newHT1 = t1.height();
+
+		// Based on Fibonacci trees; see solution to assignment 6, 201130,
+		// and maxHeight() definition below.
+		// int maxNewHeight = maxHeight(sT1 + sT2);
+		// result = result && newHT1 <= maxNewHeight;
+
+		// Concatenation can't grow the tallest tree by more than 1 level.
+		result = result && newHT1 <= (Math.max(hT1, hT2) + 1);
+
+		//Add a few elements, just to make sure balance codes aren't messed up
+		//t1.add('1', 0);
+		//t1.add('0', 0);
+		//t1.add('1');
+		//t1.add('0');
+
+		result = result && t1.toString().equals("01" + expected + "10");
+		// result = result && t1.height() <= maxHeight(t1.size());
+		
+		DisplayTree.display(t1);
+
+	}
+
+}

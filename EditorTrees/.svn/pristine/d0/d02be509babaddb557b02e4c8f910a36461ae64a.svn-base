@@ -1,0 +1,86 @@
+package editortrees;
+
+// A node in a height-balanced binary tree with rank.
+// Except for the NULL_sNODE (if you choose to use one), one node cannot
+// belong to two different trees.
+
+public class Node {
+
+	enum Code {
+		SAME, LEFT, RIGHT
+	};
+
+	// The fields would normally be private, but for the purposes of this class,
+	// we want to be able to test the results of the algorithms in addition to
+	// the
+	// "publicly visible" effects
+
+	char element;
+	Node left, right; // subtrees
+	Node parent;
+	int rank; // inorder position of this node within its own subtree.
+	Code balance;
+
+	// Node parent; // You may want this field.
+	// Feel free to add other fields that you find useful
+
+	// You will probably want to add several other methods
+
+	public Node(char c) {
+		this.element = c;
+		this.left = EditTree.NULL_NODE;
+		this.right = EditTree.NULL_NODE;
+		this.rank = 0;
+		this.balance = Code.SAME;
+		this.parent = null;
+	}
+
+	public Node() {
+	}
+
+	public Node(char c, Node parent) {
+		this.element = c;
+		this.left = EditTree.NULL_NODE;
+		this.right = EditTree.NULL_NODE;
+		this.rank = 0;
+		this.balance = Code.SAME;
+		this.parent = parent;
+	}
+
+	// For the following methods, you should fill in the details so that they
+	// work correctly
+	public int height() {
+		if (this == EditTree.NULL_NODE) {
+			return -1;
+		}
+		return 1 + Math.max(this.left.height(), this.right.height());
+	}
+
+	public int size() {
+		return 0;
+	}
+
+	public String toString() {
+		String result;
+		if (this.equals(EditTree.NULL_NODE)) {
+			return "";
+		}
+		result = "";
+		if (this.left != EditTree.NULL_NODE) {
+			result += this.left.toString();
+		}
+		result += this.element;
+		if (this.right != EditTree.NULL_NODE) {
+			result += this.right.toString();
+		}
+		return result;
+	}
+
+	public static int size(Node node) {
+		if (node == EditTree.NULL_NODE) {
+			return 0;
+		} else {
+			return 1 + size(node.left) + size(node.right);
+		}
+	}
+}

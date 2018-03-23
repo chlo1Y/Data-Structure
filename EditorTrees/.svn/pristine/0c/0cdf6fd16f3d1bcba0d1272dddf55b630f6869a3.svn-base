@@ -1,0 +1,27 @@
+package editortrees;
+
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author kochelmj.
+ *         Created Jan 28, 2014.
+ */
+public class DisplayTester {
+
+	/**
+	 * TODO Put here a description of what this method does.
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		EditTree et = new EditTree('A');
+		et.add('b');
+		et.add('i');
+		et.add('t');
+		et.add('c');
+		et.add('h');
+		DisplayTree.display(et);
+
+	}
+
+}

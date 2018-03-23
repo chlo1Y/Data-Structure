@@ -1,0 +1,39 @@
+package editortrees;
+
+import static org.junit.Assert.assertEquals;
+
+/**
+ * TODO Put here a description of what this class does.
+ * 
+ * @author kochelmj. Created Jan 28, 2014.
+ */
+public class DisplayTester {
+
+	/**
+	 * TODO Put here a description of what this method does.
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		EditTree t1 = new EditTree();
+
+		t1.add('d');
+		t1.add('a', 0);
+		t1.add('h');
+		t1.add('X', 0);
+		t1.add('c', 2);
+		t1.add('f', 4);
+		t1.add('j');
+		t1.add('b', 2);
+		t1.add('e', 5);
+		t1.add('g', 7);
+		t1.add('i', 9);
+		t1.add('k');
+		t1.add('l');
+
+		t1.delete(0);
+		DisplayTree.display(t1);
+
+	}
+
+}

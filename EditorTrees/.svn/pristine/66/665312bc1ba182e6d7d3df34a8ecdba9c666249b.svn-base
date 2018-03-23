@@ -1,0 +1,64 @@
+package editortrees;
+
+import static org.junit.Assert.assertEquals;
+
+/**
+ * TODO Put here a description of what this class does.
+ * 
+ * @author kochelmj. Created Jan 28, 2014.
+ */
+public class DisplayTester {
+
+	/**
+	 * TODO Put here a description of what this method does.
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		EditTree t1 = makeTreeFromSlides();
+//		EditTree t1 = new EditTree();
+//		t1.add('D');
+//		t1.add('F');
+//		EditTree t2 = new EditTree();
+//		t2.add('H');
+//		t2.add('G',0);
+//		t1.concatenate(t2);
+		EditTree newTree = t1.split(5);
+		DisplayTree.display(t1);
+		DisplayTree.display(newTree);
+
+	}
+	
+	public static EditTree makeTreeFromSlides() {
+		// Level-order insertion so no rotations (we're pretty sure).
+		// CONSIDER: a check to make sure there were no rotations?
+		EditTree t = new EditTree();
+		t.add('I', 0);
+		t.add('C', 0);
+		t.add('W', 2);
+		t.add('A', 0);
+		t.add('G', 2);
+		t.add('M', 4);
+		t.add('Y', 6);
+		t.add('B', 1);
+		t.add('F', 3);
+		t.add('H', 5);
+		t.add('L', 7);
+		t.add('R', 9);
+		t.add('X', 11);
+		t.add('a', 13);
+		t.add('D', 3);
+		t.add('K', 8);
+		t.add('O', 11);
+		t.add('T', 13);
+		t.add('Z', 17);
+		t.add('N', 11);
+		t.add('P', 13);
+		t.add('S', 15);
+		t.add('U', 17);
+		assertEquals(0, t.totalRotationCount());
+
+		return t;
+	}
+
+}
